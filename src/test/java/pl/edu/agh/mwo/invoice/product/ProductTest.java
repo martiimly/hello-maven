@@ -28,13 +28,33 @@ public class ProductTest {
         Assert.assertThat(new BigDecimal("100"), Matchers.comparesEqualTo(product.getPrice()));
         Assert.assertThat(new BigDecimal("0.08"), Matchers.comparesEqualTo(product.getTaxPercent()));
     }
-
+    @Test
+    public void testProductPriceAndExciseWithBottleOfWine() {
+        Product product = new BottleOfWine("Prosecco", new BigDecimal("100.0"));
+        Assert.assertThat(new BigDecimal("100"), Matchers.comparesEqualTo(product.getPrice()));
+        Assert.assertThat(new BigDecimal("5.56"), Matchers.comparesEqualTo(product.getExcise()));
+    }
+    @Test
+    public void testProductPriceAndExciseWithFuelCanister() {
+        Product product = new FuelCanister("Diesel", new BigDecimal("100.0"));
+        Assert.assertThat(new BigDecimal("100"), Matchers.comparesEqualTo(product.getPrice()));
+        Assert.assertThat(new BigDecimal("5.56"), Matchers.comparesEqualTo(product.getExcise()));
+    }
     @Test
     public void testPriceWithTax() {
         Product product = new DairyProduct("Oscypek", new BigDecimal("100.0"));
         Assert.assertThat(new BigDecimal("108"), Matchers.comparesEqualTo(product.getPriceWithTax()));
     }
-
+    @Test
+    public void testPriceWithExciseWithBottleOfWine() {
+        Product product = new BottleOfWine("Prosecco", new BigDecimal("100.0"));
+        Assert.assertThat(new BigDecimal("128.56"), Matchers.comparesEqualTo(product.getPriceWithExciseAndTax()));
+    }
+    @Test
+    public void testPriceWithExciseWithFuelCanister() {
+        Product product = new FuelCanister("Diesel", new BigDecimal("100.0"));
+        Assert.assertThat(new BigDecimal("105.56"), Matchers.comparesEqualTo(product.getPriceWithExcise()));
+    }
     @Test(expected = IllegalArgumentException.class)
     public void testProductWithNullName() {
         new OtherProduct(null, new BigDecimal("100.0"));
