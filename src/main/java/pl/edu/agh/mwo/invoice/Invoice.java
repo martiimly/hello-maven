@@ -1,10 +1,14 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import pl.edu.agh.mwo.invoice.product.Product;
+
+import javax.swing.text.Position;
 
 public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
@@ -14,14 +18,12 @@ public class Invoice {
     public void addProduct(Product product) {
         addProduct(product, 1);
     }
-
     public void addProduct(Product product, Integer quantity) {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
         products.put(product, quantity);
     }
-
     public BigDecimal getNetTotal() {
         BigDecimal totalNet = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
@@ -30,11 +32,9 @@ public class Invoice {
         }
         return totalNet;
     }
-
     public BigDecimal getTaxTotal() {
         return getGrossTotal().subtract(getNetTotal());
     }
-
     public BigDecimal getGrossTotal() {
         BigDecimal totalGross = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
@@ -43,8 +43,19 @@ public class Invoice {
         }
         return totalGross;
     }
-
     public int getNumber() {
         return number;
+    }
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+   public Iterator<Product> getIteratorProduct() {
+        return products.keySet().iterator();
+    }
+    public void  getQuantity(Invoice invoice) {
+        Map<Product, Integer> product = invoice.getProducts();
+        for (Map.Entry<Product, Integer> set : product.entrySet()) {
+            System.out.println(set.getValue());
+        }
     }
 }

@@ -11,6 +11,7 @@ public abstract class Product {
 
     private final BigDecimal excise;
 
+
     protected Product(String name, BigDecimal price, BigDecimal tax, BigDecimal excise) {
         if (name == null || name.equals("")
                 || price == null || tax == null || excise == null || tax.compareTo(new BigDecimal(0)) < 0
@@ -42,7 +43,6 @@ public abstract class Product {
     public BigDecimal getPriceWithTax() {
         return price.multiply(taxPercent).add(price);
     }
-
     public BigDecimal getPriceWithExciseAndTax(){return price.multiply(taxPercent).add(price).add(excise);}
     public BigDecimal getPriceWithExcise(){return price.add(excise);}
 }
