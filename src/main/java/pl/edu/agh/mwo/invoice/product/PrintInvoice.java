@@ -1,14 +1,9 @@
 package pl.edu.agh.mwo.invoice.product;
 import pl.edu.agh.mwo.invoice.Invoice;
-import pl.edu.agh.mwo.invoice.product.Product;
 
-import javax.swing.*;
-import javax.swing.text.Position;
-import java.security.Key;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 
 public class PrintInvoice {
@@ -23,10 +18,9 @@ public class PrintInvoice {
            Product product = iteratorProduct.next();
             System.out.println("Nazwa: " + product.getName() + "Cena jednostkowa: " + product.getPrice() + " zł "+"  Ilość: " );
         }
-
     }
     public static void printFotter(Invoice invoice){
-        System.out.println("Liczba pozycji " + invoice.getNumber());
+        System.out.println("Kwota brutto: " + invoice.getGrossTotal());
         System.out.println();
     }
     public static void printInvoice(Invoice i) {

@@ -3,6 +3,8 @@ package pl.edu.agh.mwo.invoice.product;
 import pl.edu.agh.mwo.invoice.Invoice;
 
 import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.Map;
 
 public class main {
     public static void main(String[] args){

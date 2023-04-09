@@ -1,17 +1,14 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
 import javax.swing.text.Position;
 
 public class Invoice {
-    private Map<Product, Integer> products = new HashMap<>();
+    private final Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
 
@@ -46,16 +43,15 @@ public class Invoice {
     public int getNumber() {
         return number;
     }
-    public Map<Product, Integer> getProducts() {
-        return products;
-    }
-   public Iterator<Product> getIteratorProduct() {
+
+
+    public Iterator<Product> getIteratorProduct() {
         return products.keySet().iterator();
     }
-    public void  getQuantity(Invoice invoice) {
-        Map<Product, Integer> product = invoice.getProducts();
-        for (Map.Entry<Product, Integer> set : product.entrySet()) {
-            System.out.println(set.getValue());
-        }
-    }
+//
+//    public Map<Product, Integer> getProducts() {
+//        for ( Integer quantity : products.values()) {
+//            System.out.println(quantity);}
+//            return getProducts();
+//    }
 }
